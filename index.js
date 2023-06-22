@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const db = require('./db');
 const userRouter = require('./routers/user-router');
 const dishRouter = require('./routers/dish-router');
+const orderRouter = require('./routers/order-router');
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.use('/user', userRouter);
 app.use('/dish', dishRouter);
+app.use('/order', orderRouter);
 
 const PORT = process.env.PORT || 3000;
 db.then(() => {
