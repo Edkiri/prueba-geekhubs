@@ -79,4 +79,33 @@ router.post('/', async (req, res) => {
 	}
 });
 
+router.put('/:dishId', async (req, res) => {
+	const { dishId } = req.params;
+	try {
+		const updatedDish = await Dishes.update(
+			{
+				dishname: req.body.dishname,
+				categoy_id: req.body.categoryId,
+			},
+			{
+				where: {
+					id: dishId,
+				},
+			}
+		);
+		res.json({
+			success: true,
+			data: {
+				dish: updatedDish,
+			},
+		});
+	} catch (err) {
+		res.status(500).json({
+			success: false,
+			message: 'Algo salió mal',
+			error: err,
+		});
+	}
+});
+
 module.exports = router;
