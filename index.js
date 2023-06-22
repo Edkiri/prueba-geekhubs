@@ -1,10 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const db = require('./db');
+const userRouter = require('./routers/user-router');
 
 dotenv.config();
 
 const app = express();
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
 	return res.json({
@@ -14,6 +17,8 @@ app.get('/', (req, res) => {
 		},
 	});
 });
+
+app.use('/user', userRouter);
 
 const PORT = process.env.PORT || 3000;
 db.then(() => {

@@ -21,5 +21,7 @@ module.exports = {
 		'import/newline-after-import': 0,
 		'global-require': 0,
 		'import/order': 0,
+		'no-unused-expressions': 0,
+		'no-sequences': 0,
 	},
 };
